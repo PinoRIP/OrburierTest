@@ -1,5 +1,6 @@
 # OrburierTest
 Orburier is an UE5 network predicted gameplay framework. This are automated tests for https://github.com/PinoRIP/Orburier.
+The UE-project is here: https://github.com/PinoRIP/OrburierProject
 
 ## Structure
  - The folder structure & tests in them should be organised in the same way the actual project is.
