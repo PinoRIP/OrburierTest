@@ -39,7 +39,8 @@ public class OrburierTest : ModuleRules
 				"Slate",
 				"SlateCore", 
 				"Orburier", 
-				"GameplayTags"
+				"OrburierEditor",
+				"GameplayTags", "Imath"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
