@@ -5,16 +5,16 @@
 #include "CoreMinimal.h"
 #include "OrbSystemComponent.h"
 #include "GameFramework/Actor.h"
-#include "MyTestActor.generated.h"
+#include "OteTestActor.generated.h"
 
 UCLASS()
-class ORBURIERTEST_API AMyTestActor : public AActor
+class ORBURIERTEST_API AOteTestActor : public AActor
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	AMyTestActor();
+	AOteTestActor();
 
 protected:
 	// Called when the game starts or when spawned
@@ -26,4 +26,6 @@ public:
 
 	UPROPERTY()
 	UOrbSystemComponent* OrbSystemComponent;
+
+	
 };

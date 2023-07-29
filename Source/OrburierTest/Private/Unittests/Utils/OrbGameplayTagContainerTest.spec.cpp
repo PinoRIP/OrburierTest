@@ -479,5 +479,20 @@ void FOrbGameplayTagContainerTest::Define()
 		TestEqual("Tag count changed was called 9 times", TagCountChangedCalledCount, 9);
 		TestEqual("Exact tag count changed was called 3 times", ExactTagCountChangedCalledCount, 3);
 	});
+
+	It("Should succeed if the container can fill TagContainer", [this]()
+	{
+		FOrbGameplayTagContainer tagContainer;
+		tagContainer.AddTag(TagName1);
+		tagContainer.AddTag(TagName2);
+		tagContainer.AddTag(TagName3);
+
+		FGameplayTagContainer targetContainer;
+		tagContainer.Fill(targetContainer);
+
+		TestTrue("FGameplayTagContainer HasTag 1", targetContainer.HasTag(TagName1));
+		TestTrue("FGameplayTagContainer HasTag 2", targetContainer.HasTag(TagName2));
+		TestTrue("FGameplayTagContainer HasTag 3", targetContainer.HasTag(TagName3));
+	});
 }
 

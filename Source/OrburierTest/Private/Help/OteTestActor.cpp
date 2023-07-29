@@ -1,11 +1,11 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "MyTestActor.h"
+#include "OteTestActor.h"
 
 
 // Sets default values
-AMyTestActor::AMyTestActor()
+AOteTestActor::AOteTestActor()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -14,14 +14,14 @@ AMyTestActor::AMyTestActor()
 }
 
 // Called when the game starts or when spawned
-void AMyTestActor::BeginPlay()
+void AOteTestActor::BeginPlay()
 {
 	Super::BeginPlay();
 	
 }
 
 // Called every frame
-void AMyTestActor::Tick(float DeltaTime)
+void AOteTestActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
