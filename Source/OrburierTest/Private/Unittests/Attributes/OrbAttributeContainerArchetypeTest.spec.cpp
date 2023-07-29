@@ -223,6 +223,74 @@ void FOrbAttributeContainerArchetypeTest::Define()
 			archetype.DisposeInstanceData(ptr);
 			FMemory::Free(testData);
 		});
+
+		It("GetStruct should return nullptr given the passed struct is not part of the archetype", [this]()
+		{
+			FOrbAttributeContainerArchetype archetype;
+			archetype.Change(FOteTestInputAttributeContainer2::StaticStruct());
+
+			auto ptr = archetype.AllocateInstanceData();
+
+			FOteTestInputAttributeContainer1* actual = archetype.GetStruct<FOteTestInputAttributeContainer1>(ptr);
+
+			TestNull("Ptr", actual);
+
+			archetype.DisposeInstanceData(ptr);
+		});
+
+		It("GetStruct should return nullptr given the passed index is less than 0", [this]()
+		{
+			FOrbAttributeContainerArchetype archetype;
+			archetype.Change(FOteTestInputAttributeContainer1::StaticStruct());
+
+			auto ptr = archetype.AllocateInstanceData();
+
+			FOteTestInputAttributeContainer1* actual = archetype.GetStruct<FOteTestInputAttributeContainer1>(ptr, -1);
+
+			TestNull("Ptr", actual);
+
+			archetype.DisposeInstanceData(ptr);
+		});
+
+		It("GetStruct should return nullptr given the passed index is out of range", [this]()
+		{
+			FOrbAttributeContainerArchetype archetype;
+			archetype.Change(FOteTestInputAttributeContainer1::StaticStruct());
+
+			auto ptr = archetype.AllocateInstanceData();
+
+			FOteTestInputAttributeContainer1* actual = archetype.GetStruct<FOteTestInputAttributeContainer1>(ptr, archetype.Num());
+
+			TestNull("Ptr", actual);
+
+			archetype.DisposeInstanceData(ptr);
+		});
+
+		It("GetStructIndex should return the attribute container struct index given it is part of the archetype", [this]()
+		{
+			ForArchetypeTypes([this](EOrbAttributeContainerArchetypeType archetypeType)
+			{
+				FOrbAttributeContainerArchetype archetype(archetypeType);
+				archetype.Change(GetCorrectScriptStruct(archetypeType));
+
+				int32 actual = archetype.GetStructIndex(GetCorrectScriptStruct(archetypeType) );
+
+				TestEqual("Index", actual, 0);
+			});
+		});
+
+		It("GetStructIndex should return -1 given the attribute container struct is not part of the archetype", [this]()
+		{
+			ForArchetypeTypes([this](EOrbAttributeContainerArchetypeType archetypeType)
+			{
+				FOrbAttributeContainerArchetype archetype(archetypeType);
+				archetype.Change(GetCorrectScriptStruct(archetypeType));
+
+				int32 actual = archetype.GetStructIndex(GetCorrectScriptStruct2(archetypeType));
+
+				TestEqual("Index", actual, -1);
+			});
+		});
 	});
 }
 
