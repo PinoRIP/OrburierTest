@@ -31,7 +31,7 @@ public:
 		return EOrbAvailabilityPolicy::Public;
 	}
 
-	virtual void Configure(AActor* owner, UOrbSystemComponent* component, UObject* grant, FOrbSlimActionHandle handle) override
+	virtual void Configure(AActor* owner, UOrbSystemComponent* component, UObject* grant, FOrbActionHandle handle) override
 	{
 		Super::Configure(owner, component, grant, handle);
 		ConfigureInvoked++;

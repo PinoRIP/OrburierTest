@@ -3,7 +3,7 @@
 
 #include "OteBlueprintAction.h"
 
-void UOteBlueprintAction::BpConfigure_Implementation(AActor* owner, UOrbSystemComponent* component, UObject* grant, FOrbSlimActionHandle handle)
+void UOteBlueprintAction::BpConfigure_Implementation(AActor* owner, UOrbSystemComponent* component, UObject* grant, FOrbActionHandle handle)
 {
 	Super::Configure(owner, component, grant, handle);
 }
