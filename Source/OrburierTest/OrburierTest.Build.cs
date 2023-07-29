@@ -37,7 +37,9 @@ public class OrburierTest : ModuleRules
 				"CoreUObject",
 				"Engine",
 				"Slate",
-				"SlateCore",
+				"SlateCore", 
+				"Orburier", 
+				"GameplayTags"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
