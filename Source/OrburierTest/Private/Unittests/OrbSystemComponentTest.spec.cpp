@@ -1,6 +1,6 @@
 ﻿#include "OrbSystemComponent.h"
 #include "Help/OteOpenOrbSystemComponent.h"
-#include "Help/OteTestAction.h"
+#include "Help/Actions/OteTestAction.h"
 #include "Help/OteTestActor.h"
 #include "Help/Attributes/OteTestInputAttributeContainer.h"
 #include "Misc/AutomationTest.h"
@@ -15,10 +15,9 @@ END_DEFINE_SPEC(FOrbSystemComponentTest)
 
 void FOrbSystemComponentTest::Define()
 {
-	TestWorld = FAutomationEditorCommonUtils::CreateNewMap();
-	
 	BeforeEach([this]()
 	{
+		TestWorld = FAutomationEditorCommonUtils::CreateNewMap();
 		TestActor = TestWorld->SpawnActor<AOteTestActor>();
 		Component = static_cast<UOteOpenOrbSystemComponent*>(TestActor->OrbSystemComponent);
 	});

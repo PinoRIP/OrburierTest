@@ -3,9 +3,9 @@
 
 #include "OteBlueprintAction.h"
 
-void UOteBlueprintAction::BpConfigure_Implementation()
+void UOteBlueprintAction::BpConfigure_Implementation(AActor* owner, UOrbSystemComponent* component, UObject* grant, FOrbSlimActionHandle handle)
 {
-	Super::Configure();
+	Super::Configure(owner, component, grant, handle);
 }
 
 bool UOteBlueprintAction::BpCanActivate_Implementation(const FOrbObserveContext& activationContext, const FOrbActionObserveContext& actionContext, bool isExternal)

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Action/OrbAction.h"
+#include "Action/OrbActionHandle.h"
 #include "UObject/Object.h"
 #include "OteTestAction.generated.h"
 
@@ -30,9 +31,9 @@ public:
 		return EOrbAvailabilityPolicy::Public;
 	}
 
-	virtual void Configure() override
+	virtual void Configure(AActor* owner, UOrbSystemComponent* component, UObject* grant, FOrbSlimActionHandle handle) override
 	{
-		Super::Configure();
+		Super::Configure(owner, component, grant, handle);
 		ConfigureInvoked++;
 	}
 

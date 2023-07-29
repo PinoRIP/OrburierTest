@@ -59,10 +59,10 @@ public:
 		return &ActivationBlockedTags;
 	}
 	
-	virtual void Configure() override
+	virtual void Configure(AActor* owner, UOrbSystemComponent* component, UObject* grant, FOrbSlimActionHandle handle) override
 	{
 		ConfigureInvoked++;
-		BpConfigure();
+		BpConfigure(owner, component, grant, handle);
 	}
 
 	virtual bool CanActivate(const FOrbObserveContext& activationContext, const FOrbActionObserveContext& actionContext, bool isExternal) override
@@ -138,7 +138,7 @@ public:
 	FGameplayTagContainer ActivationBlockedTags;
 
 	UFUNCTION(BlueprintNativeEvent)
-	void BpConfigure();
+	void BpConfigure(AActor* owner, UOrbSystemComponent* component, UObject* grant, FOrbSlimActionHandle handle);
 	
 	UFUNCTION(BlueprintNativeEvent)
 	bool BpCanActivate(UPARAM(ref) const FOrbObserveContext& activationContext, UPARAM(ref) const FOrbActionObserveContext& actionContext, bool isExternal);
