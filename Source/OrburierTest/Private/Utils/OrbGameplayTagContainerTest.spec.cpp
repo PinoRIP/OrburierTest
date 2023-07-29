@@ -400,15 +400,15 @@ void FOrbGameplayTagContainerTest::Define()
 		tagContainer.AddTag(TagName2);
 		tagContainer.AddTag(TagName3);
 		tagContainer.PauseTagChangedEvent();
-		tagContainer.RegisterTagCountChanged().AddLambda([this](const FGameplayTag& tag, int32 count) { });
-		tagContainer.RegisterExactTagCountChanged().AddLambda([this](const FGameplayTag& tag, int32 count) { });
+		tagContainer.OnTagCountChanged().AddLambda([this](const FGameplayTag& tag, int32 count) { });
+		tagContainer.OnExactTagCountChanged().AddLambda([this](const FGameplayTag& tag, int32 count) { });
 
 		tagContainer.Reset();
 
 		TestTrue("IsEmpty", tagContainer.IsEmpty());
 		TestFalse("Is the tag count changed event unpaused", tagContainer.IsChangedEventPaused());
-		TestFalse("RegisterTagCountChanged IsBound", tagContainer.RegisterTagCountChanged().IsBound());
-		TestFalse("RegisterExactTagCountChanged IsBound", tagContainer.RegisterExactTagCountChanged().IsBound());
+		TestFalse("RegisterTagCountChanged IsBound", tagContainer.OnTagCountChanged().IsBound());
+		TestFalse("RegisterExactTagCountChanged IsBound", tagContainer.OnExactTagCountChanged().IsBound());
 	});
 
 	It("Should succeed if the container can handle events", [this]()
@@ -418,7 +418,7 @@ void FOrbGameplayTagContainerTest::Define()
 		int32 TagCountChangedCalledCount = 0;
 		int32 ExactTagCountChangedCalledCount = 0;
 		
-		tagContainer.RegisterTagCountChanged().AddLambda([this, &tagContainer, &TagCountChangedCalledCount](const FGameplayTag& tag, int32 count)
+		tagContainer.OnTagCountChanged().AddLambda([this, &tagContainer, &TagCountChangedCalledCount](const FGameplayTag& tag, int32 count)
 		{
 			TagCountChangedCalledCount++;
 			
@@ -445,7 +445,7 @@ void FOrbGameplayTagContainerTest::Define()
 				TestTrue("Unexpected tag event! -" + FString::FromInt(TagCountChangedCalledCount), false);
 			}
 		});
-		tagContainer.RegisterExactTagCountChanged().AddLambda([this, &tagContainer, &ExactTagCountChangedCalledCount](const FGameplayTag& tag, int32 count)
+		tagContainer.OnExactTagCountChanged().AddLambda([this, &tagContainer, &ExactTagCountChangedCalledCount](const FGameplayTag& tag, int32 count)
 		{
 			ExactTagCountChangedCalledCount++;
 			TestTrue("Add Event Tag is Right 1 EXACT -" + FString::FromInt(ExactTagCountChangedCalledCount), tag == TagName1);
