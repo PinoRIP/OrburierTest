@@ -95,7 +95,7 @@ public:
 		BpOnSimulate(executionContext, actionContext);
 	}
 
-	virtual void OnEffect(const FOrbEffectContext& effectContext, const FOrbActionObserveContext& actionContext) override
+	virtual void OnEffect(const FOrbEffectContext& effectContext, const FOrbActionEffectContext& actionContext) override
 	{
 		OnEffectInvoked++;
 		BpOnEffect(effectContext, actionContext);
@@ -156,7 +156,7 @@ public:
 	void BpOnSimulate(UPARAM(ref) const FOrbExecutionContext& executionContext, UPARAM(ref) const FOrbActionContext& actionContext);
 
 	UFUNCTION(BlueprintNativeEvent)
-	void BpOnEffect(UPARAM(ref) const FOrbEffectContext& effectContext, UPARAM(ref) const FOrbActionObserveContext& actionContext);
+	void BpOnEffect(UPARAM(ref) const FOrbEffectContext& effectContext, UPARAM(ref) const FOrbActionEffectContext& actionContext);
 
 	UFUNCTION(BlueprintNativeEvent)
 	bool BpCanForget(UPARAM(ref) const FOrbObserveContext& currentContext, UPARAM(ref) const FOrbActionObserveContext& actionContext, const int32& deactivationTime);

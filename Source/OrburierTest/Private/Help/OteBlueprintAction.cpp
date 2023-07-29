@@ -33,7 +33,7 @@ void UOteBlueprintAction::BpOnSimulate_Implementation(const FOrbExecutionContext
 	Super::OnSimulate(executionContext, actionContext);
 }
 
-void UOteBlueprintAction::BpOnEffect_Implementation(const FOrbEffectContext& effectContext, const FOrbActionObserveContext& actionContext)
+void UOteBlueprintAction::BpOnEffect_Implementation(const FOrbEffectContext& effectContext, const FOrbActionEffectContext& actionContext)
 {
 	Super::OnEffect(effectContext, actionContext);
 }

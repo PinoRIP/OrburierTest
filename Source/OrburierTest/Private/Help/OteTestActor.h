@@ -4,11 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "OrbSystemComponent.h"
+#include "OrbSystemParticipant.h"
 #include "GameFramework/Actor.h"
 #include "OteTestActor.generated.h"
 
 UCLASS()
-class ORBURIERTEST_API AOteTestActor : public AActor
+class ORBURIERTEST_API AOteTestActor : public AActor, public IOrbSystemParticipant
 {
 	GENERATED_BODY()
 
@@ -25,7 +26,13 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY()
-	UOrbSystemComponent* OrbSystemComponent;
+	class UOrbSystemComponent* OrbSystemComponent;
 
-	
+	UPROPERTY()
+	class UOteTestComponent1* OteTestComponent1;
+
+	UPROPERTY()
+	class UOteTestComponent2* OteTestComponent2;
+
+	virtual bool OnOrburierSetup_Implementation(FOrbParticipantSetupContext& context) override;
 };

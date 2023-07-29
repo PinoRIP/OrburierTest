@@ -66,7 +66,7 @@ public:
 		Super::OnSimulate(executionContext, actionContext);
 	}
 
-	virtual void OnEffect(const FOrbEffectContext& effectContext, const FOrbActionObserveContext& actionContext) override
+	virtual void OnEffect(const FOrbEffectContext& effectContext, const FOrbActionEffectContext& actionContext) override
 	{
 		OnEffectInvoked++;
 		Super::OnEffect(effectContext, actionContext);
