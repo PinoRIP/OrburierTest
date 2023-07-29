@@ -21,13 +21,13 @@ class ORBURIERTEST_API UOteBlueprintAction : public UOrbAction
 	GENERATED_BODY()
 	
 public:
-	virtual EOrbInstancingPolicy GetInstancingPolicy() const override { return BpGetInstancingPolicy(); };
+	virtual EOrbInstancingPolicy GetInstancingPolicy() const override { return InstancingPolicy; };
 
-	virtual EOrbAvailabilityPolicy GetAvailabilityPolicy() const override { return BpGetAvailabilityPolicy(); }
+	virtual EOrbAvailabilityPolicy GetAvailabilityPolicy() const override { return AvailabilityPolicy; }
 
-	virtual EOrbReActivationPolicy GetReActivationPolicy() const override { return BpGetReActivationPolicy(); }
+	virtual EOrbReActivationPolicy GetReActivationPolicy() const override { return ReActivationPolicy; }
 
-	virtual EOrbActivityPolicy GetActivityPolicy() const override { return BpGetActivityPolicy(); }
+	virtual EOrbActivityPolicy GetActivityPolicy() const override { return ActivityPolicy; }
 
 	virtual const FGameplayTagContainer* GetActionTags() const override
 	{
@@ -106,18 +106,18 @@ public:
 		CanForgetInvoked++;
 		return BpCanForget(currentContext, actionContext, deactivationTime);
 	}
+	
+	UPROPERTY(EditDefaultsOnly)
+	EOrbInstancingPolicy InstancingPolicy;
 
-	UFUNCTION(BlueprintNativeEvent)
-	EOrbInstancingPolicy BpGetInstancingPolicy() const;
+	UPROPERTY(EditDefaultsOnly)
+	EOrbAvailabilityPolicy AvailabilityPolicy;
 
-	UFUNCTION(BlueprintNativeEvent)
-	EOrbAvailabilityPolicy BpGetAvailabilityPolicy() const;
+	UPROPERTY(EditDefaultsOnly)
+	EOrbReActivationPolicy ReActivationPolicy;
 
-	UFUNCTION(BlueprintNativeEvent)
-	EOrbReActivationPolicy BpGetReActivationPolicy() const;
-
-	UFUNCTION(BlueprintNativeEvent)
-	EOrbActivityPolicy BpGetActivityPolicy() const;
+	UPROPERTY(EditDefaultsOnly)
+	EOrbActivityPolicy ActivityPolicy;
 
 	UPROPERTY(EditDefaultsOnly)
 	FGameplayTagContainer ActionTags;

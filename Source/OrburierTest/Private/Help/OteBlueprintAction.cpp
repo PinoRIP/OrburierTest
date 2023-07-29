@@ -3,26 +3,6 @@
 
 #include "OteBlueprintAction.h"
 
-EOrbAvailabilityPolicy UOteBlueprintAction::BpGetAvailabilityPolicy_Implementation() const
-{
-	return Super::GetAvailabilityPolicy();
-}
-
-EOrbInstancingPolicy UOteBlueprintAction::BpGetInstancingPolicy_Implementation() const
-{
-	return Super::GetInstancingPolicy();
-}
-
-EOrbReActivationPolicy UOteBlueprintAction::BpGetReActivationPolicy_Implementation() const
-{
-	return Super::GetReActivationPolicy();
-}
-
-EOrbActivityPolicy UOteBlueprintAction::BpGetActivityPolicy_Implementation() const
-{
-	return Super::GetActivityPolicy();
-}
-
 void UOteBlueprintAction::BpConfigure_Implementation()
 {
 	Super::Configure();

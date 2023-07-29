@@ -1,7 +1,6 @@
 ﻿#include "OrbSystemComponent.h"
 #include "Help/OteTestAction.h"
 #include "Help/OteTestActor.h"
-#include "Help/MyTestObject.h"
 #include "Misc/AutomationTest.h"
 #include "Tests/AutomationEditorCommon.h"
 
@@ -47,15 +46,11 @@ void FOrbSystemComponentTest::Define()
 				TestEqual("Actions count", actionsCount, 0);
 			});
 
-			It("should invoke the callback after granting", [this]()
+			It("should return valid handle when the action is granted", [this]()
 			{
-				UMyTestObject* MyObject = NewObject<UMyTestObject>(TestWorld);
-				FOrbActionGranted callbackDelegate;
-				callbackDelegate.BindUFunction(MyObject, FName("SetHandle"));
-				
-				Component->GrantAction(TSubclassOf<UOteTestAction>(UOteTestAction::StaticClass()), callbackDelegate);
+				const FOrbActionHandle handle = Component->GrantAction(TSubclassOf<UOteTestAction>(UOteTestAction::StaticClass()));
 
-				TestTrue("Valid handle", MyObject->Handle.IsValid());
+				TestTrue("Valid handle", handle.IsValid());
 			});
 
 			It("should be get able when granted", [this]()
